@@ -6,7 +6,8 @@
   "scripts": {
     "test": "npm run dev",
     "dev": "electron .",
-    "build": "electron-packager . --overwrite --asar --platform=win32 --arch=x64 --prune=true --out=dist/ --electron-version=25.0.0"
+    "devtools": "electron . --dev",
+    "build": "electron-packager . --overwrite --asar --platform=win32 --arch=x64 --prune=true --out=dist/ --electron-version=25.0.0 --icon=assets/favicon.ico"
   },
   "repository": {
     "type": "git",

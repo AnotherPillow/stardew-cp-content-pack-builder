@@ -1,3 +1,5 @@
+window.location.relpath = window.location.href.split("/").slice(0, -1).join("/");
+
 function addPortraitsDatalist () {
     // * add drop-down menu to select character for portrait option
     const selectPortraitElement = document.createElement("select");
@@ -166,7 +168,8 @@ function addCraftablesDatalist() {
 
     let craftableCoordinates = Object();
     fetch(
-        'https://raw.githubusercontent.com/holy-the-sea/CP2AT/main/src/coords_info/craftable_coords.json')
+        //'https://raw.githubusercontent.com/holy-the-sea/CP2AT/main/src/coords_info/craftable_coords.json')
+        `${window.location.relpath}/libs/craftable_coords.json`)
         .then(response => response.json())
         .then(data => {
             Object.entries(data).forEach(item => {
@@ -192,7 +195,8 @@ function addSpringobjectsDatalist() {
 
     let springobjectCoordinates = Object();
     fetch(
-        'https://raw.githubusercontent.com/holy-the-sea/CP2AT/main/src/coords_info/springobjects_coords.json')
+        //'https://raw.githubusercontent.com/holy-the-sea/CP2AT/main/src/coords_info/springobjects_coords.json')
+        `${window.location.relpath}/libs/springobjects_coords.json`)
         .then(response => response.json())
         .then(data => {
             Object.entries(data).forEach(item => {
@@ -218,7 +222,8 @@ function addFurnitureDatalist() {
 
     let furnitureCoordinates = Object();
     fetch(
-        'https://raw.githubusercontent.com/holy-the-sea/CP2AT/main/src/coords_info/furniture_coords.json')
+        //'https://raw.githubusercontent.com/holy-the-sea/CP2AT/main/src/coords_info/furniture_coords.json')
+        `${window.location.relpath}/libs/furniture_coords.json`)
         .then(response => response.json())
         // .then(data => vanillaObjects = data)
         .then(data => {
