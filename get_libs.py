@@ -9,6 +9,10 @@ urls = [
     'https://raw.githubusercontent.com/holy-the-sea/CP2AT/main/src/coords_info/furniture_coords.json',
 ]
 
+#make renderer/libs folder if it doesn't exist
+if not os.path.exists('renderer/libs'):
+    os.makedirs('renderer/libs')
+
 def get_libs():
     #download libs
     for url in urls:
