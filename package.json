@@ -1,0 +1,32 @@
+{
+  "name": "stardew-cp-content-pack-builder",
+  "version": "1.0.0",
+  "description": "App to build content packs for the Stardew Valley mod Content Patcher.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run dev",
+    "dev": "electron .",
+    "build": "electron-packager . --overwrite --asar --platform=win32 --arch=x64 --prune=true --out=dist/ --electron-version=25.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anotherpillow/stardew-cp-content-pack-builder.git"
+  },
+  "keywords": [
+    "stardew",
+    "contentpack",
+    "contentpatcher"
+  ],
+  "author": "holythesea",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anotherpillow/stardew-cp-content-pack-builder/issues"
+  },
+  "homepage": "https://github.com/anotherpillow/stardew-cp-content-pack-builder#readme",
+  "devDependencies": {
+    "electron": "^25.0.0"
+  },
+  "dependencies": {
+    "electron-packager": "^17.1.1"
+  }
+}
