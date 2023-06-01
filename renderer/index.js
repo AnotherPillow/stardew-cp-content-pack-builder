@@ -463,9 +463,17 @@ function addChange(ev) {
     individualChangeElement.appendChild(headerElement);
     changeElement.appendChild(individualChangeElement);
 
+    // * log name
+    const logNameInput = document.createElement("input");
+    logNameInput.classList.add("lognameinput");
+    logNameInput.type = "text";
+    logNameInput.placeholder = "Log Name";
+
     // * target/asset dropdowns
     const dropdownElements = document.createElement("div");
     dropdownElements.classList.add("changedropdowns");
+
+    dropdownElements.appendChild(logNameInput);
 
     const selectTargetElement = addTarget();
     dropdownElements.appendChild(selectTargetElement);
@@ -743,6 +751,7 @@ function handleContentUpdate(ev) {
 
     const allChanges = document.querySelectorAll(".individualchange");
     allChanges.forEach(change => {
+        const logNameElement = change.querySelector(".lognameinput");
         const targetElement = change.querySelector(".target");
         const assetElement = change.querySelector(".asset");
 
@@ -901,6 +910,14 @@ function handleContentUpdate(ev) {
             })
             changeObject.When = configList;
         }
+        
+        if (logNameElement.value) {
+            changeObject.LogName = logNameElement.value;
+        }
+        else if (changeObject.Target !== undefined && !logNameElement.value) {
+            changeObject.LogName = changeObject.Target;
+        }
+
         value["Changes"].push(changeObject);
     })
 
