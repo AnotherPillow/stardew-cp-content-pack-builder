@@ -28,6 +28,7 @@
     "electron": "^25.0.0"
   },
   "dependencies": {
-    "electron-packager": "^17.1.1"
+    "electron-packager": "^17.1.1",
+    "unzipper": "^0.10.14"
   }
 }

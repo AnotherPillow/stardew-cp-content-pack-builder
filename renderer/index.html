@@ -77,8 +77,17 @@
                     </form>
                 </div>
                 <div>
-                    <button type="button" class="button" id="downloadbutton" onclick="handleDownload(event)">Download</button>
+                    <button type="button" class="button" id="downloadbutton" onclick="handleDownload(event, true)">Download</button>
                 </div>
+                <div>
+                    <label for="smapi_path">SMAPI Path:</label>
+                    <input type="text" id="smapi_path" name="smapi_path" placeholder="drive:/path/to/StardewModdingAPI.exe" onchange="handleSMAPIPath(this)">
+
+                    <button type="button" class="button" id="smapi_button" onclick="handleRunSMAPI(event)">Run SMAPI with mod</button>
+                    <p>Please made sure to place any needed mods in <code>%appdata%\stardew-cp-content-pack-builder\Run\Mods</code> (including CP)</p>
+                </div>
+
+
             </div>
             <div id="contentoutput">
                 content.json

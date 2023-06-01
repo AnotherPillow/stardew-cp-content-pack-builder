@@ -119,3 +119,7 @@ input { margin: 3px; }
     text-align: center;
     margin-bottom: 0px;
 }
+
+#smapi_path {
+    width: 250px;
+}

@@ -1,5 +1,13 @@
 window.location.relpath = window.location.href.split("/").slice(0, -1).join("/");
 
+api.send('getgamedir',{})
+
+api.toRenderer('gamedirgot', (event, data) => {
+    console.log(data);
+
+    document.querySelector('#smapi_path').value = data;
+})
+
 function addPortraitsDatalist () {
     // * add drop-down menu to select character for portrait option
     const selectPortraitElement = document.createElement("select");
@@ -274,7 +282,12 @@ function handleManifestUpdate(ev) {
     // * update manifest on text input
     ev.preventDefault;
     const data = new FormData(document.getElementById("manifestform"));
-    const value = Object.fromEntries(data.entries());
+    const value = {
+        ...Object.fromEntries(data.entries()),
+        "ContentPackFor": {
+            "UniqueID": "Pathoschild.ContentPatcher",
+        }
+    }
 
     let json = JSON.stringify(value, null, 4);
 
@@ -1045,7 +1058,7 @@ function fileChangeHandler(ev) {
     }
 }
 
-function handleDownload(ev) {
+function handleDownload(ev, dodl) {
     ev.preventDefault();
 
     zip = new JSZip();
@@ -1063,8 +1076,28 @@ function handleDownload(ev) {
             }
         })
     })
-    zip.generateAsync({type:"blob"})
-    .then(function (blob) {
-        saveAs(blob, document.querySelector("#modname").value);
-    });
+    if (dodl) {
+        zip.generateAsync({type:"blob"}).then(function (blob) {
+            saveAs(blob, document.querySelector("#modname").value);
+        });
+    }
+
+    // * send zip to server
+    else {
+        //convert o base64
+        zip.generateAsync({type:"base64"}).then(function (base64) {
+            api.send("download", base64);
+        });
+    }
+}
+
+function handleSMAPIPath(el) {
+    const smapiPath = el.value;
+
+    api.send("setgamedir", smapiPath);
+}
+
+
+function handleRunSMAPI(ev) {
+    handleDownload(ev, false);
 }
