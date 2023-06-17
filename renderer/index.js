@@ -980,7 +980,7 @@ function handleContentUpdate(ev) {
             }
             if (targetElement.nextElementSibling.className === "monstersdropdown") {
                 const monstersDropdown = targetElement.nextElementSibling;
-                changeObject.Target = `Monsters/${monstersDropdown.value}`;
+                changeObject.Target = `Characters/Monsters/${monstersDropdown.value}`;
             }
             if (["animalsdropdown", "craftablesdropdown", "furnituredropdown", "itemsdropdown", "buildingsdropdown", "portraitsdropdown"].includes(targetElement.nextElementSibling.nextElementSibling.className)) {
                 targetElement.parentElement.removeChild(targetElement.nextElementSibling.nextElementSibling);
